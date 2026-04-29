@@ -33,7 +33,7 @@
     "cover": "https://covers.openlibrary.org/b/isbn/9780553593716-L.jpg",
     "loanDays": 21,
     "lateFee": 2,
-    "status": "AVAILABLE"
+    "status": "CHECKED_OUT"
   },
   {
     "id": 4,
@@ -57,7 +57,7 @@
     "cover": "https://covers.openlibrary.org/b/isbn/9780765326355-L.jpg",
     "loanDays": 28,
     "lateFee": 2,
-    "status": "AVAILABLE"
+    "status": "CHECKED_OUT"
   },
   {
     "id": 6,

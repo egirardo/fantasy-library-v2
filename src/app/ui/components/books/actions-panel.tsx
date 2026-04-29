@@ -4,7 +4,7 @@ import BorrowButton from "./borrow-button";
 import Link from "next/link";
 import { BookStatus } from "@/models/book";
 import { getBookById } from "@/lib/books";
-import { describeStatus, loadBookLog } from "@/lib/library";
+import { describeStatus, loadBookLog, canReserveBook } from "@/lib/library";
 
 const statusColors: Record<BookStatus, string> = {
     [BookStatus.Available]: "text-green-400",
@@ -43,8 +43,11 @@ export default async function ActionsPanel({ bookId, initialSaved, session }: Pr
             {session ? (
                 <div className="flex items-center justify-center gap-4">
                 <SaveButton bookId={bookId} initialSaved={initialSaved} />
-                <BorrowButton bookId={bookId} isBorrowed={isBorrowed} />
-                <button className="bg-yellow-600 hover:bg-yellow-700 text-white py-2 px-4 rounded-lg transition-colors">
+                <BorrowButton bookId={bookId} isBorrowed={isBorrowed} bookStatus={book.status} />
+                <button
+                    disabled={!canReserveBook(book.status)}
+                    className="bg-yellow-600 hover:bg-yellow-700 text-white py-2 px-4 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                >
                     Reserve
                 </button>
                 </div>

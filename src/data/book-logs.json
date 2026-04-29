@@ -38,5 +38,25 @@
     "message": "Elsa Girardo returned the book.",
     "bookId": 4,
     "userId": 1
+  },
+  {
+    "entryId": 5,
+    "action": "borrowed",
+    "dueDate": "2026-05-13T13:01:36.857Z",
+    "timestamp": "2026-04-29T13:01:36.857Z",
+    "level": "INFO",
+    "message": "Elsa Girardo borrowed the book.",
+    "bookId": 5,
+    "userId": 1
+  },
+  {
+    "entryId": 6,
+    "action": "borrowed",
+    "dueDate": "2026-05-13T13:44:13.256Z",
+    "timestamp": "2026-04-29T13:44:13.256Z",
+    "level": "INFO",
+    "message": "Rune Panda borrowed the book.",
+    "bookId": 3,
+    "userId": 2
   }
 ]

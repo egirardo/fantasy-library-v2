@@ -6,10 +6,8 @@
     "email": "egirardo@hotmail.com",
     "password": "$2b$10$poQNaqZZTsVoQcgW.Y7FDurHIUttoCcvQ1Sl47k//Ou4Yb.d2zKqi",
     "savedBooks": [
-      3,
-      4,
       5,
-      9
+      3
     ]
   },
   {
@@ -17,6 +15,14 @@
     "firstName": "Rune",
     "lastName": "Panda",
     "email": "rune@panda.se",
-    "password": "$2b$10$IDgAaVW/kUMOJRl4bpG/1.rcrMAWJkMq3UBN9oFDup825x/xjHdLG"
+    "password": "$2b$10$IDgAaVW/kUMOJRl4bpG/1.rcrMAWJkMq3UBN9oFDup825x/xjHdLG",
+    "savedBooks": [
+      5,
+      2,
+      8,
+      3,
+      4,
+      9
+    ]
   }
 ]

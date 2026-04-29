@@ -2,13 +2,15 @@
 
 import { borrowBook, returnBook } from "@/lib/actions";
 import { useActionState } from "react";
+import { BookStatus } from "@/models/book";
 
 type Props = {
     bookId: number;
     isBorrowed: boolean;
+    bookStatus: BookStatus;
 };
 
-export default function BorrowButton({ bookId, isBorrowed: initialIsBorrowed }: Props) {
+export default function BorrowButton({ bookId, isBorrowed: initialIsBorrowed, bookStatus }: Props) {
     const [borrowState, borrowAction, borrowPending] = useActionState(borrowBook, null);
     const [returnState, returnAction, returnPending] = useActionState(returnBook, null);
 
@@ -35,8 +37,8 @@ export default function BorrowButton({ bookId, isBorrowed: initialIsBorrowed }: 
             <input type="hidden" name="bookId" value={bookId} />
             <button
                 type="submit"
-                disabled={pending}
-                className="bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-lg transition-colors disabled:opacity-50"
+                disabled={pending || bookStatus !== BookStatus.Available}
+                className="bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
                 {pending ? "Borrowing..." : "Borrow"}
             </button>
