@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "entryId": 1,
+    "action": "borrowed",
+    "dueDate": "2026-05-13T12:29:10.447Z",
+    "timestamp": "2026-04-29T12:29:10.448Z",
+    "level": "INFO",
+    "message": "Elsa Girardo borrowed the book.",
+    "bookId": 4,
+    "userId": 1
+  },
+  {
+    "entryId": 2,
+    "action": "returned",
+    "returnedDate": "2026-04-29T12:34:41.503Z",
+    "timestamp": "2026-04-29T12:34:41.503Z",
+    "level": "INFO",
+    "message": "Elsa Girardo returned the book.",
+    "bookId": 4,
+    "userId": 1
+  },
+  {
+    "entryId": 3,
+    "action": "borrowed",
+    "dueDate": "2026-05-13T12:35:08.414Z",
+    "timestamp": "2026-04-29T12:35:08.414Z",
+    "level": "INFO",
+    "message": "Elsa Girardo borrowed the book.",
+    "bookId": 4,
+    "userId": 1
+  },
+  {
+    "entryId": 4,
+    "action": "returned",
+    "returnedDate": "2026-04-29T12:35:18.252Z",
+    "timestamp": "2026-04-29T12:35:18.252Z",
+    "level": "INFO",
+    "message": "Elsa Girardo returned the book.",
+    "bookId": 4,
+    "userId": 1
+  }
+]
