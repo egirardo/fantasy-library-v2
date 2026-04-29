@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 400">
+
+  <!-- Sword 1: pointing up, left position -->
+  <g transform="translate(10, 55)" stroke="#9ca3af" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.22">
+    <polygon points="50,5 43,168 57,168" stroke-width="1.5"/>
+    <line x1="50" y1="8" x2="50" y2="160" stroke-width="1"/>
+    <path d="M 43,170 C 34,168 20,162 10,153 C 6,150 6,146 9,144 C 12,142 15,145 19,149 C 27,156 36,163 43,167" stroke-width="1.5"/>
+    <circle cx="8" cy="149" r="3.5" stroke-width="1.5"/>
+    <path d="M 57,170 C 66,168 80,162 90,153 C 94,150 94,146 91,144 C 88,142 85,145 81,149 C 73,156 64,163 57,167" stroke-width="1.5"/>
+    <circle cx="92" cy="149" r="3.5" stroke-width="1.5"/>
+    <rect x="40" y="166" width="20" height="11" rx="2.5" stroke-width="1.5"/>
+    <rect x="44" y="177" width="12" height="50" rx="2" stroke-width="1.5"/>
+    <line x1="44" y1="183" x2="56" y2="188" stroke-width="0.9"/>
+    <line x1="44" y1="190" x2="56" y2="195" stroke-width="0.9"/>
+    <line x1="44" y1="197" x2="56" y2="202" stroke-width="0.9"/>
+    <line x1="44" y1="204" x2="56" y2="209" stroke-width="0.9"/>
+    <line x1="44" y1="211" x2="56" y2="216" stroke-width="0.9"/>
+    <line x1="44" y1="218" x2="56" y2="223" stroke-width="0.9"/>
+    <ellipse cx="50" cy="229" rx="11" ry="3.5" stroke-width="1.5"/>
+    <circle cx="50" cy="252" r="19" stroke-width="2"/>
+    <circle cx="50" cy="252" r="13" stroke-width="1"/>
+    <circle cx="50" cy="252" r="7" stroke-width="1"/>
+    <circle cx="50" cy="252" r="2.5" stroke-width="1"/>
+    <ellipse cx="50" cy="269" rx="9" ry="4" stroke-width="1.5"/>
+  </g>
+
+  <!-- Sword 2: pointing down, right position (flip via scale(1,-1) around y=145 then reposition) -->
+  <g transform="translate(200, 55) translate(0, 290) scale(1, -1)" stroke="#9ca3af" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.22">
+    <polygon points="50,5 43,168 57,168" stroke-width="1.5"/>
+    <line x1="50" y1="8" x2="50" y2="160" stroke-width="1"/>
+    <path d="M 43,170 C 34,168 20,162 10,153 C 6,150 6,146 9,144 C 12,142 15,145 19,149 C 27,156 36,163 43,167" stroke-width="1.5"/>
+    <circle cx="8" cy="149" r="3.5" stroke-width="1.5"/>
+    <path d="M 57,170 C 66,168 80,162 90,153 C 94,150 94,146 91,144 C 88,142 85,145 81,149 C 73,156 64,163 57,167" stroke-width="1.5"/>
+    <circle cx="92" cy="149" r="3.5" stroke-width="1.5"/>
+    <rect x="40" y="166" width="20" height="11" rx="2.5" stroke-width="1.5"/>
+    <rect x="44" y="177" width="12" height="50" rx="2" stroke-width="1.5"/>
+    <line x1="44" y1="183" x2="56" y2="188" stroke-width="0.9"/>
+    <line x1="44" y1="190" x2="56" y2="195" stroke-width="0.9"/>
+    <line x1="44" y1="197" x2="56" y2="202" stroke-width="0.9"/>
+    <line x1="44" y1="204" x2="56" y2="209" stroke-width="0.9"/>
+    <line x1="44" y1="211" x2="56" y2="216" stroke-width="0.9"/>
+    <line x1="44" y1="218" x2="56" y2="223" stroke-width="0.9"/>
+    <ellipse cx="50" cy="229" rx="11" ry="3.5" stroke-width="1.5"/>
+    <circle cx="50" cy="252" r="19" stroke-width="2"/>
+    <circle cx="50" cy="252" r="13" stroke-width="1"/>
+    <circle cx="50" cy="252" r="7" stroke-width="1"/>
+    <circle cx="50" cy="252" r="2.5" stroke-width="1"/>
+    <ellipse cx="50" cy="269" rx="9" ry="4" stroke-width="1.5"/>
+  </g>
+
+</svg>

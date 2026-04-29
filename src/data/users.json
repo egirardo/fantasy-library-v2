@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "firstName": "Elsa",
+    "lastName": "Girardo",
+    "email": "egirardo@hotmail.com",
+    "password": "$2b$10$poQNaqZZTsVoQcgW.Y7FDurHIUttoCcvQ1Sl47k//Ou4Yb.d2zKqi"
+  },
+  {
+    "id": 2,
+    "firstName": "Rune",
+    "lastName": "Panda",
+    "email": "rune@panda.se",
+    "password": "$2b$10$IDgAaVW/kUMOJRl4bpG/1.rcrMAWJkMq3UBN9oFDup825x/xjHdLG"
+  }
+]
