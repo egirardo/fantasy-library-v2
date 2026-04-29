@@ -1,6 +1,5 @@
 import { getSession } from "@/lib/session";
 import { redirect } from "next/navigation";
-import SwordBackground from "../sword-background";
 
 export default async function Profile() {
     const user = await getSession();
@@ -8,7 +7,6 @@ export default async function Profile() {
     if (!user) redirect("/login");
 
     return (
-        <SwordBackground className="flex-col items-center justify-center p-10">
             <div className="bg-background/80 backdrop-blur-sm p-10 rounded-2xl border border-blue-700/50 w-full max-w-lg">
                 <h1
                     className="text-2xl font-bold text-blue-300 tracking-widest text-center mb-2"
@@ -33,6 +31,5 @@ export default async function Profile() {
                     </div>
                 </div>
             </div>
-        </SwordBackground>
     );
 }

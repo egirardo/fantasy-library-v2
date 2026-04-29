@@ -6,13 +6,13 @@ import { User, UserUpdate } from "@/models/user";
 export function describeStatus(status: BookStatus): string {
     switch (status) {
         case BookStatus.Available:
-            return "available";
+            return "Available";
         case BookStatus.CheckedOut:
-            return "checked out";
+            return "Checked Out";
         case BookStatus.Reserved:
-            return "reserved";
+            return "Reserved";
         case BookStatus.Lost:
-            return "lost";
+            return "Lost";
     }
 }
 

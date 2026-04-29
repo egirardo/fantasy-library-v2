@@ -39,8 +39,8 @@ export default function UserMenu({ isLoggedIn }: UserMenuProps) {
                             <Link href="/profile" className={itemClass} onClick={() => setOpen(false)}>
                                 Profile
                             </Link>
-                            <Link href="/my-library" className={itemClass} onClick={() => setOpen(false)}>
-                                My Library
+                            <Link href="/profile/my-books" className={itemClass} onClick={() => setOpen(false)}>
+                                My Books
                             </Link>
                             <form action={logoutUser}>
                                 <button type="submit" className={itemClass}>

@@ -11,7 +11,7 @@ export default function BookListCard({ book }: { book: Book }) {
     return (
         <Link
             href={`/books/${book.id}`}
-            className="bg-surface border border-blue-900/50 rounded-lg shadow-md p-4 hover:shadow-xl hover:border-blue-500 hover:bg-surface-hover transition-all"
+            className="block w-full bg-surface border border-blue-900/50 rounded-lg shadow-md p-4 hover:shadow-xl hover:border-blue-500 hover:bg-surface-hover transition-all"
         >
             <div className="relative h-75 mb-4">
                 {errored ? (

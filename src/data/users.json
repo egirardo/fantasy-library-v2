@@ -4,7 +4,14 @@
     "firstName": "Elsa",
     "lastName": "Girardo",
     "email": "egirardo@hotmail.com",
-    "password": "$2b$10$poQNaqZZTsVoQcgW.Y7FDurHIUttoCcvQ1Sl47k//Ou4Yb.d2zKqi"
+    "password": "$2b$10$poQNaqZZTsVoQcgW.Y7FDurHIUttoCcvQ1Sl47k//Ou4Yb.d2zKqi",
+    "savedBooks": [
+      3,
+      2,
+      4,
+      5,
+      9
+    ]
   },
   {
     "id": 2,

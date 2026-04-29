@@ -2,6 +2,16 @@ import { type SessionUser } from "@/lib/session";
 import SaveButton from "../save-button";
 import BorrowButton from "./borrow-button";
 import Link from "next/link";
+import { BookStatus } from "@/models/book";
+import { getBookById } from "@/lib/books";
+import { describeStatus } from "@/lib/library";
+
+const statusColors: Record<BookStatus, string> = {
+    [BookStatus.Available]: "text-green-400",
+    [BookStatus.CheckedOut]: "text-orange-400",
+    [BookStatus.Reserved]: "text-yellow-400",
+    [BookStatus.Lost]: "text-white",
+};
 
 type Props = {
     bookId: number;
@@ -15,17 +25,21 @@ const loginMessage = (
     </p>
 );
 
-export default function ActionsPanel({ bookId, initialSaved, session }: Props) {
+export default async function ActionsPanel({ bookId, initialSaved, session }: Props) {
+    const book = await getBookById(JSON.stringify(bookId));
     return (
-        <div className="bg-background/80 backdrop-blur-sm p-5 rounded-2xl border border-blue-700/50 w-full max-w-lg flex items-center justify-center self-center gap-4">
+        <div className="bg-background/80 backdrop-blur-sm p-5 rounded-2xl border border-blue-700/50 w-full max-w-lg flex flex-col items-center justify-center self-center gap-4">
+            <>
+                <h2 className="text-lg font-bold text-blue-300 tracking-wide">Availability: <span className={statusColors[book.status]}>{describeStatus(book.status)}</span></h2>
+            </>
             {session ? (
-                <>
+                <div className="flex items-center justify-center gap-4">
                 <SaveButton bookId={bookId} initialSaved={initialSaved} />
                 <BorrowButton bookId={bookId} />
                 <button className="bg-yellow-600 hover:bg-yellow-700 text-white py-2 px-4 rounded-lg transition-colors">
                     Reserve
                 </button>
-                </>
+                </div>
             ) : (
                 loginMessage
             )}
