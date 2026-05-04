@@ -8,16 +8,16 @@ type Props = {
     bookId: number;
     isBorrowed: boolean;
     bookStatus: BookStatus;
+    isReservedByCurrentUser: boolean;
 };
 
-export default function BorrowButton({ bookId, isBorrowed: initialIsBorrowed, bookStatus }: Props) {
-    const [borrowState, borrowAction, borrowPending] = useActionState(borrowBook, null);
-    const [returnState, returnAction, returnPending] = useActionState(returnBook, null);
+export default function BorrowButton({ bookId, isBorrowed: initialIsBorrowed, bookStatus, isReservedByCurrentUser }: Props) {
+    const [, borrowAction, borrowPending] = useActionState(borrowBook, null);
+    const [, returnAction, returnPending] = useActionState(returnBook, null);
 
-    const isBorrowed = borrowState?.success ? true : returnState?.success ? false : initialIsBorrowed;
     const pending = borrowPending || returnPending;
 
-    if (isBorrowed) {
+    if (initialIsBorrowed) {
         return (
             <form action={returnAction}>
                 <input type="hidden" name="bookId" value={bookId} />
@@ -26,7 +26,7 @@ export default function BorrowButton({ bookId, isBorrowed: initialIsBorrowed, bo
                     disabled={pending}
                     className="bg-violet-600 hover:bg-violet-700 text-white py-2 px-4 rounded-lg transition-colors disabled:opacity-50"
                 >
-                    {pending ? "Returning..." : "Return"}
+                    {returnPending ? "Returning..." : "Return"}
                 </button>
             </form>
         );
@@ -37,10 +37,10 @@ export default function BorrowButton({ bookId, isBorrowed: initialIsBorrowed, bo
             <input type="hidden" name="bookId" value={bookId} />
             <button
                 type="submit"
-                disabled={pending || bookStatus !== BookStatus.Available}
+                disabled={pending || (bookStatus !== BookStatus.Available && !(bookStatus === BookStatus.Reserved && isReservedByCurrentUser))}
                 className="bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
-                {pending ? "Borrowing..." : "Borrow"}
+                {borrowPending ? "Borrowing..." : "Borrow"}
             </button>
         </form>
     );

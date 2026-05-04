@@ -2,8 +2,8 @@ import { getBookById } from "@/lib/books";
 import { getSession } from "@/lib/session";
 import { loadUsers } from "@/lib/library";
 import BookCoverImage from "./book-cover-image";
-import ActionsPanel from "./actions-panel";
-import Link from "next/link";
+import ActionsPanel from "../actions/actions-panel";
+import BackButton from "../actions/back-button";
 import SwordBackground from "../sword-background";
 
 type Props = { params: Promise<{id: string}> };
@@ -32,11 +32,9 @@ export default async function BookDetailCard({ params }: Props) {
                 <p className="mb-1"><strong className="text-sky-300">Year:</strong> {book.year}</p>
                 <p className="mb-4"><strong className="text-sky-300">Description:</strong> {book.description}</p>
                 <ActionsPanel bookId={book.id} initialSaved={initialSaved} session={session} />
-                <Link href="/books" className="self-center mt-2">
-                    <button className="px-6 py-2 bg-blue-700 text-white border border-blue-500 rounded hover:bg-blue-600 tracking-wider transition-colors" style={{ fontFamily: "var(--font-crimson)" }}>
-                        ← Back to Catalog
-                    </button>
-                </Link>
+                <div className="self-center mt-2">
+                    <BackButton />
+                </div>
             </div>
         </SwordBackground>
     );

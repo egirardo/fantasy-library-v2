@@ -82,18 +82,62 @@ export function reserveBook(book: Book, user: User, logEntries: IBookLogEntry[])
     return { updatedBook, updatedLogEntries };
 }
 
+export function cancelReservation(book: Book, user: User, logEntries: IBookLogEntry[]): { updatedBook: Book, updatedLogEntries: IBookLogEntry[] } {
+    if (book.status !== BookStatus.Reserved) {
+        throw new Error("Book is not currently reserved.");
+    }
+    const updatedBook = { ...book, status: BookStatus.Available };
+    const newLogEntry: IBookLogEntry = {
+        entryId: logEntries.length > 0 ? Math.max(...logEntries.map(e => e.entryId)) + 1 : 1,
+        action: "cancelled",
+        timestamp: new Date(),
+        level: LogLevel.Info,
+        message: `${user.firstName} ${user.lastName} cancelled their reservation.`,
+        bookId: book.id,
+        userId: user.id
+    };
+    addBookLog(newLogEntry);
+    const updatedLogEntries = logAction(logEntries, newLogEntry);
+    return { updatedBook, updatedLogEntries };
+}
+
 export function checkoutBook(book: Book, user: User, logEntries: IBookLogEntry[]): { updatedBook: Book, updatedLogEntries: IBookLogEntry[] } {
-    if (book.status !== BookStatus.Available) {
+    const userReservedCount = logEntries.filter(e => e.userId === user.id && e.bookId === book.id && e.action === "reserved").length;
+    const userCancelledCount = logEntries.filter(e => e.userId === user.id && e.bookId === book.id && e.action === "cancelled").length;
+    const userHasReservation = userReservedCount > userCancelledCount;
+
+    if (book.status === BookStatus.Reserved && !userHasReservation) {
+        throw new Error("This book has been reserved by another user.");
+    }
+    if (book.status !== BookStatus.Available && book.status !== BookStatus.Reserved) {
         throw new Error("Book is not available for checkout");
     }
+
     const borrowedCount = logEntries.filter(e => e.userId === user.id && e.action === 'borrowed').length;
     const returnedCount = logEntries.filter(e => e.userId === user.id && e.action === 'returned').length;
     if (borrowedCount - returnedCount >= 3) {
         throw new Error("You cannot check out more than 3 books at a time, please return some books before checking out more.");
     }
+
+    let currentLogEntries = logEntries;
+
+    if (userHasReservation) {
+        const cancelEntry: IBookLogEntry = {
+            entryId: currentLogEntries.length > 0 ? Math.max(...currentLogEntries.map(e => e.entryId)) + 1 : 1,
+            action: "cancelled",
+            timestamp: new Date(),
+            level: LogLevel.Info,
+            message: `${user.firstName} ${user.lastName}'s reservation was fulfilled by borrowing.`,
+            bookId: book.id,
+            userId: user.id
+        };
+        addBookLog(cancelEntry);
+        currentLogEntries = logAction(currentLogEntries, cancelEntry);
+    }
+
     const updatedBook = { ...book, status: BookStatus.CheckedOut };
     const newLogEntry: IBorrowedEntry = {
-        entryId: logEntries.length > 0 ? Math.max(...logEntries.map(e => e.entryId)) + 1 : 1,
+        entryId: currentLogEntries.length > 0 ? Math.max(...currentLogEntries.map(e => e.entryId)) + 1 : 1,
         action: "borrowed",
         dueDate: new Date(Date.now() + 14 * 24 * 60 * 60 * 1000),
         timestamp: new Date(),
@@ -103,7 +147,7 @@ export function checkoutBook(book: Book, user: User, logEntries: IBookLogEntry[]
         userId: user.id
     };
     addBookLog(newLogEntry);
-    const updatedLogEntries = logAction(logEntries, newLogEntry);
+    const updatedLogEntries = logAction(currentLogEntries, newLogEntry);
     return { updatedBook, updatedLogEntries };
 }
 

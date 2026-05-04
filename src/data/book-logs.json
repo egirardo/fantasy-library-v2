@@ -58,5 +58,329 @@
     "message": "Rune Panda borrowed the book.",
     "bookId": 3,
     "userId": 2
+  },
+  {
+    "entryId": 7,
+    "action": "reserved",
+    "timestamp": "2026-05-04T06:52:36.662Z",
+    "level": "INFO",
+    "message": "Elsa Girardo reserved the book.",
+    "bookId": 4,
+    "userId": 1
+  },
+  {
+    "entryId": 8,
+    "action": "cancelled",
+    "timestamp": "2026-05-04T06:53:07.336Z",
+    "level": "INFO",
+    "message": "Elsa Girardo cancelled their reservation.",
+    "bookId": 4,
+    "userId": 1
+  },
+  {
+    "entryId": 9,
+    "action": "borrowed",
+    "dueDate": "2026-05-18T06:53:08.386Z",
+    "timestamp": "2026-05-04T06:53:08.386Z",
+    "level": "INFO",
+    "message": "Elsa Girardo borrowed the book.",
+    "bookId": 4,
+    "userId": 1
+  },
+  {
+    "entryId": 10,
+    "action": "returned",
+    "returnedDate": "2026-05-04T06:53:14.036Z",
+    "timestamp": "2026-05-04T06:53:14.036Z",
+    "level": "INFO",
+    "message": "Elsa Girardo returned the book.",
+    "bookId": 4,
+    "userId": 1
+  },
+  {
+    "entryId": 11,
+    "action": "reserved",
+    "timestamp": "2026-05-04T07:02:00.437Z",
+    "level": "INFO",
+    "message": "Elsa Girardo reserved the book.",
+    "bookId": 4,
+    "userId": 1
+  },
+  {
+    "entryId": 12,
+    "action": "cancelled",
+    "timestamp": "2026-05-04T07:02:01.915Z",
+    "level": "INFO",
+    "message": "Elsa Girardo's reservation was fulfilled by borrowing.",
+    "bookId": 4,
+    "userId": 1
+  },
+  {
+    "entryId": 13,
+    "action": "borrowed",
+    "dueDate": "2026-05-18T07:02:01.915Z",
+    "timestamp": "2026-05-04T07:02:01.915Z",
+    "level": "INFO",
+    "message": "Elsa Girardo borrowed the book.",
+    "bookId": 4,
+    "userId": 1
+  },
+  {
+    "entryId": 14,
+    "action": "returned",
+    "returnedDate": "2026-05-04T07:02:03.582Z",
+    "timestamp": "2026-05-04T07:02:03.582Z",
+    "level": "INFO",
+    "message": "Elsa Girardo returned the book.",
+    "bookId": 4,
+    "userId": 1
+  },
+  {
+    "entryId": 15,
+    "action": "borrowed",
+    "dueDate": "2026-05-18T07:02:25.298Z",
+    "timestamp": "2026-05-04T07:02:25.298Z",
+    "level": "INFO",
+    "message": "Elsa Girardo borrowed the book.",
+    "bookId": 4,
+    "userId": 1
+  },
+  {
+    "entryId": 16,
+    "action": "returned",
+    "returnedDate": "2026-05-04T07:02:29.082Z",
+    "timestamp": "2026-05-04T07:02:29.082Z",
+    "level": "INFO",
+    "message": "Elsa Girardo returned the book.",
+    "bookId": 4,
+    "userId": 1
+  },
+  {
+    "entryId": 17,
+    "action": "reserved",
+    "timestamp": "2026-05-04T07:02:30.125Z",
+    "level": "INFO",
+    "message": "Elsa Girardo reserved the book.",
+    "bookId": 4,
+    "userId": 1
+  },
+  {
+    "entryId": 18,
+    "action": "cancelled",
+    "timestamp": "2026-05-04T07:02:34.131Z",
+    "level": "INFO",
+    "message": "Elsa Girardo cancelled their reservation.",
+    "bookId": 4,
+    "userId": 1
+  },
+  {
+    "entryId": 19,
+    "action": "reserved",
+    "timestamp": "2026-05-04T07:02:36.834Z",
+    "level": "INFO",
+    "message": "Elsa Girardo reserved the book.",
+    "bookId": 4,
+    "userId": 1
+  },
+  {
+    "entryId": 20,
+    "action": "cancelled",
+    "timestamp": "2026-05-04T07:02:38.702Z",
+    "level": "INFO",
+    "message": "Elsa Girardo's reservation was fulfilled by borrowing.",
+    "bookId": 4,
+    "userId": 1
+  },
+  {
+    "entryId": 21,
+    "action": "borrowed",
+    "dueDate": "2026-05-18T07:02:38.702Z",
+    "timestamp": "2026-05-04T07:02:38.702Z",
+    "level": "INFO",
+    "message": "Elsa Girardo borrowed the book.",
+    "bookId": 4,
+    "userId": 1
+  },
+  {
+    "entryId": 22,
+    "action": "returned",
+    "returnedDate": "2026-05-04T07:02:41.248Z",
+    "timestamp": "2026-05-04T07:02:41.248Z",
+    "level": "INFO",
+    "message": "Elsa Girardo returned the book.",
+    "bookId": 4,
+    "userId": 1
+  },
+  {
+    "entryId": 23,
+    "action": "reserved",
+    "timestamp": "2026-05-04T07:06:34.515Z",
+    "level": "INFO",
+    "message": "Elsa Girardo reserved the book.",
+    "bookId": 4,
+    "userId": 1
+  },
+  {
+    "entryId": 24,
+    "action": "cancelled",
+    "timestamp": "2026-05-04T07:06:35.547Z",
+    "level": "INFO",
+    "message": "Elsa Girardo's reservation was fulfilled by borrowing.",
+    "bookId": 4,
+    "userId": 1
+  },
+  {
+    "entryId": 25,
+    "action": "borrowed",
+    "dueDate": "2026-05-18T07:06:35.548Z",
+    "timestamp": "2026-05-04T07:06:35.548Z",
+    "level": "INFO",
+    "message": "Elsa Girardo borrowed the book.",
+    "bookId": 4,
+    "userId": 1
+  },
+  {
+    "entryId": 26,
+    "action": "returned",
+    "returnedDate": "2026-05-04T07:06:37.400Z",
+    "timestamp": "2026-05-04T07:06:37.400Z",
+    "level": "INFO",
+    "message": "Elsa Girardo returned the book.",
+    "bookId": 4,
+    "userId": 1
+  },
+  {
+    "entryId": 27,
+    "action": "reserved",
+    "timestamp": "2026-05-04T07:06:39.371Z",
+    "level": "INFO",
+    "message": "Elsa Girardo reserved the book.",
+    "bookId": 4,
+    "userId": 1
+  },
+  {
+    "entryId": 28,
+    "action": "cancelled",
+    "timestamp": "2026-05-04T07:06:46.611Z",
+    "level": "INFO",
+    "message": "Elsa Girardo's reservation was fulfilled by borrowing.",
+    "bookId": 4,
+    "userId": 1
+  },
+  {
+    "entryId": 29,
+    "action": "borrowed",
+    "dueDate": "2026-05-18T07:06:46.612Z",
+    "timestamp": "2026-05-04T07:06:46.612Z",
+    "level": "INFO",
+    "message": "Elsa Girardo borrowed the book.",
+    "bookId": 4,
+    "userId": 1
+  },
+  {
+    "entryId": 30,
+    "action": "returned",
+    "returnedDate": "2026-05-04T07:06:47.800Z",
+    "timestamp": "2026-05-04T07:06:47.800Z",
+    "level": "INFO",
+    "message": "Elsa Girardo returned the book.",
+    "bookId": 4,
+    "userId": 1
+  },
+  {
+    "entryId": 31,
+    "action": "borrowed",
+    "dueDate": "2026-05-18T07:06:50.916Z",
+    "timestamp": "2026-05-04T07:06:50.916Z",
+    "level": "INFO",
+    "message": "Elsa Girardo borrowed the book.",
+    "bookId": 4,
+    "userId": 1
+  },
+  {
+    "entryId": 32,
+    "action": "returned",
+    "returnedDate": "2026-05-04T07:06:52.047Z",
+    "timestamp": "2026-05-04T07:06:52.047Z",
+    "level": "INFO",
+    "message": "Elsa Girardo returned the book.",
+    "bookId": 4,
+    "userId": 1
+  },
+  {
+    "entryId": 33,
+    "action": "borrowed",
+    "dueDate": "2026-05-18T07:12:25.362Z",
+    "timestamp": "2026-05-04T07:12:25.362Z",
+    "level": "INFO",
+    "message": "Elsa Girardo borrowed the book.",
+    "bookId": 4,
+    "userId": 1
+  },
+  {
+    "entryId": 34,
+    "action": "returned",
+    "returnedDate": "2026-05-04T07:12:26.477Z",
+    "timestamp": "2026-05-04T07:12:26.477Z",
+    "level": "INFO",
+    "message": "Elsa Girardo returned the book.",
+    "bookId": 4,
+    "userId": 1
+  },
+  {
+    "entryId": 35,
+    "action": "reserved",
+    "timestamp": "2026-05-04T07:12:27.530Z",
+    "level": "INFO",
+    "message": "Elsa Girardo reserved the book.",
+    "bookId": 4,
+    "userId": 1
+  },
+  {
+    "entryId": 36,
+    "action": "cancelled",
+    "timestamp": "2026-05-04T07:12:28.907Z",
+    "level": "INFO",
+    "message": "Elsa Girardo's reservation was fulfilled by borrowing.",
+    "bookId": 4,
+    "userId": 1
+  },
+  {
+    "entryId": 37,
+    "action": "borrowed",
+    "dueDate": "2026-05-18T07:12:28.907Z",
+    "timestamp": "2026-05-04T07:12:28.907Z",
+    "level": "INFO",
+    "message": "Elsa Girardo borrowed the book.",
+    "bookId": 4,
+    "userId": 1
+  },
+  {
+    "entryId": 38,
+    "action": "returned",
+    "returnedDate": "2026-05-04T07:12:30.128Z",
+    "timestamp": "2026-05-04T07:12:30.128Z",
+    "level": "INFO",
+    "message": "Elsa Girardo returned the book.",
+    "bookId": 4,
+    "userId": 1
+  },
+  {
+    "entryId": 39,
+    "action": "reserved",
+    "timestamp": "2026-05-04T07:12:46.897Z",
+    "level": "INFO",
+    "message": "Elsa Girardo reserved the book.",
+    "bookId": 4,
+    "userId": 1
+  },
+  {
+    "entryId": 40,
+    "action": "cancelled",
+    "timestamp": "2026-05-04T07:12:48.828Z",
+    "level": "INFO",
+    "message": "Elsa Girardo cancelled their reservation.",
+    "bookId": 4,
+    "userId": 1
   }
 ]

@@ -7,8 +7,93 @@ import { cookies } from "next/headers";
 import { Book, BookStatus } from "@/models/book";
 import { User } from "@/models/user";
 import { redirect } from "next/navigation";
-import { loadBookLog, checkoutBook, returnBook as libraryReturnBook } from "@/lib/library";
+import { loadBookLog, checkoutBook, returnBook as libraryReturnBook, reserveBook as libraryReserveBook, cancelReservation as libraryCancelReservation } from "@/lib/library";
 import { getSession } from "@/lib/session";
+
+export type ReserveBookState = { success: boolean; message: string } | null;
+export async function reserveBook(_prevState: ReserveBookState, formData: FormData): Promise<ReserveBookState> {
+    try {
+        const cookieStore = await cookies();
+        const sessionCookie = cookieStore.get("session");
+        if (!sessionCookie) {
+            return { success: false, message: "You must be logged in to reserve a book." };
+        }
+        const sessionUser = JSON.parse(sessionCookie.value);
+
+        const usersFilePath = path.join(process.cwd(), "src/data/users.json");
+        const usersData = await readFile(usersFilePath, "utf-8");
+        const users: User[] = JSON.parse(usersData);
+        const user = users.find(u => u.id === sessionUser.id);
+        if (!user) {
+            return { success: false, message: "User not found." };
+        }
+
+        const booksFilePath = path.join(process.cwd(), "src/data/books.json");
+        const booksData = await readFile(booksFilePath, "utf-8");
+        const books: Book[] = JSON.parse(booksData);
+
+        const bookId = parseInt(formData.get("bookId") as string);
+        const book = books.find(b => b.id === bookId);
+        if (!book) {
+            return { success: false, message: "Book not found." };
+        }
+
+        const logEntries = loadBookLog();
+        const { updatedBook } = libraryReserveBook(book, user, logEntries);
+
+        const updatedBooks = books.map(b => b.id === updatedBook.id ? updatedBook : b);
+        await writeFile(booksFilePath, JSON.stringify(updatedBooks, null, 2), "utf-8");
+
+        revalidatePath("/books");
+
+        return { success: true, message: `You have reserved "${book.title}".` };
+    } catch (e) {
+        const message = e instanceof Error ? e.message : "Something went wrong. Please try again.";
+        return { success: false, message };
+    }
+}
+export type CancelReservationState = { success: boolean; message: string } | null;
+export async function cancelReservation(_prevState: CancelReservationState, formData: FormData): Promise<CancelReservationState> {
+    try {
+        const cookieStore = await cookies();
+        const sessionCookie = cookieStore.get("session");
+        if (!sessionCookie) {
+            return { success: false, message: "You must be logged in to cancel a reservation." };
+        }
+        const sessionUser = JSON.parse(sessionCookie.value);
+
+        const usersFilePath = path.join(process.cwd(), "src/data/users.json");
+        const usersData = await readFile(usersFilePath, "utf-8");
+        const users: User[] = JSON.parse(usersData);
+        const user = users.find(u => u.id === sessionUser.id);
+        if (!user) {
+            return { success: false, message: "User not found." };
+        }
+
+        const booksFilePath = path.join(process.cwd(), "src/data/books.json");
+        const booksData = await readFile(booksFilePath, "utf-8");
+        const books: Book[] = JSON.parse(booksData);
+
+        const bookId = parseInt(formData.get("bookId") as string);
+        const book = books.find(b => b.id === bookId);
+        if (!book) {
+            return { success: false, message: "Book not found." };
+        }
+
+        const logEntries = loadBookLog();
+        const { updatedBook } = libraryCancelReservation(book, user, logEntries);
+
+        const updatedBooks = books.map(b => b.id === updatedBook.id ? updatedBook : b);
+        await writeFile(booksFilePath, JSON.stringify(updatedBooks, null, 2), "utf-8");
+
+        revalidatePath("/books");
+
+        return { success: true, message: `Your reservation for "${book.title}" has been cancelled.` };
+    } catch (e) {
+        const message = e instanceof Error ? e.message : "Something went wrong. Please try again.";
+        return { success: false, message };
+    }
+}
 
 export type BorrowBookState = { success: boolean; message: string } | null;
 export async function borrowBook(_prevState: BorrowBookState, formData: FormData): Promise<BorrowBookState> {

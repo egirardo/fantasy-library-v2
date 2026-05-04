@@ -28,7 +28,7 @@ export interface ILogEntry {
 }
 
 export interface IBookLogEntry extends ILogEntry {
-    action: "borrowed" | "returned" | "lost" | "reserved";
+    action: "borrowed" | "returned" | "lost" | "reserved" | "cancelled";
 }
 
 export interface IBorrowedEntry extends IBookLogEntry {

@@ -1,10 +1,11 @@
 import { type SessionUser } from "@/lib/session";
-import SaveButton from "../save-button";
+import SaveButton from "./save-button";
 import BorrowButton from "./borrow-button";
 import Link from "next/link";
 import { BookStatus } from "@/models/book";
 import { getBookById } from "@/lib/books";
-import { describeStatus, loadBookLog, canReserveBook } from "@/lib/library";
+import { describeStatus, loadBookLog } from "@/lib/library";
+import ReserveButton from "./reserve-button";
 
 const statusColors: Record<BookStatus, string> = {
     [BookStatus.Available]: "text-green-400",
@@ -27,13 +28,17 @@ const loginMessage = (
 
 export default async function ActionsPanel({ bookId, initialSaved, session }: Props) {
     const book = await getBookById(JSON.stringify(bookId));
+    // Borrow/reserve state is derived from the log rather than stored on the user —
+    // a book is currently borrowed/reserved if the user has more "borrowed"/"reserved"
+    // entries than "returned"/"cancelled" entries for it.
+    const logs = session ? loadBookLog() : [];
     const isBorrowed = session
-        ? (() => {
-            const logs = loadBookLog();
-            const borrowed = logs.filter(e => e.userId === session.id && e.bookId === bookId && e.action === "borrowed").length;
-            const returned = logs.filter(e => e.userId === session.id && e.bookId === bookId && e.action === "returned").length;
-            return borrowed > returned;
-        })()
+        ? logs.filter(e => e.userId === session.id && e.bookId === bookId && e.action === "borrowed").length >
+          logs.filter(e => e.userId === session.id && e.bookId === bookId && e.action === "returned").length
+        : false;
+    const isReserved = session
+        ? logs.filter(e => e.userId === session.id && e.bookId === bookId && e.action === "reserved").length >
+          logs.filter(e => e.userId === session.id && e.bookId === bookId && e.action === "cancelled").length
         : false;
     return (
         <div className="bg-background/80 backdrop-blur-sm p-5 rounded-2xl border border-blue-700/50 w-full max-w-lg flex flex-col items-center justify-center self-center gap-4">
@@ -43,13 +48,8 @@ export default async function ActionsPanel({ bookId, initialSaved, session }: Pr
             {session ? (
                 <div className="flex items-center justify-center gap-4">
                 <SaveButton bookId={bookId} initialSaved={initialSaved} />
-                <BorrowButton bookId={bookId} isBorrowed={isBorrowed} bookStatus={book.status} />
-                <button
-                    disabled={!canReserveBook(book.status)}
-                    className="bg-yellow-600 hover:bg-yellow-700 text-white py-2 px-4 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                    Reserve
-                </button>
+                <BorrowButton bookId={bookId} isBorrowed={isBorrowed} bookStatus={book.status} isReservedByCurrentUser={isReserved} />
+                <ReserveButton bookId={bookId} isReserved={isReserved} bookStatus={book.status} />
                 </div>
             ) : (
                 loginMessage
